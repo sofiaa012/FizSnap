@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game - Chapter3</title>
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/game.css">
+    <link rel="stylesheet" href="styles/chapter3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="audio.js"></script>
+</head>
+<body class="chapter-3" data-chapter="3" data-difficulty="chapter3">
+
+    
+    <header>
+        <img src="images/c3.png" alt="Chapter3 Game Logo" class="chapter3game-logo">
+    </header>
+    
+    <div class="game-header">
+        <div class="timer" id="timer">timer: 06:00</div>
+        <div class="lives" id="lives">
+            ❤️ ❤️ ❤️ 
+        </div>
+<a id="home-icon" href="stopgame.html" class="home-icon">
+            <i class="fas fa-home"></i>
+        </a>     
+    </div>
+    <div class="game-container" id="game-board"></div>
+
+    <script src="game-common.js"></script>
+    <script src="chapter3.js"></script>
+    <script>
+        // Start Chapter 3 with time limit (seconds)
+   startGame(cardsData, MomentumLimit);
+    </script>
+</body>
+</html>
