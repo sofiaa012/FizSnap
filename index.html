@@ -52,17 +52,19 @@
   const openBtn = document.getElementById("openNoteBtn");
   const modal = document.getElementById("noteModal");
   const closeBtn = document.getElementById("closeNoteBtn");
+  const iosBox = document.getElementById("noteIOS");
 
-  // detect iPhone/iPad Safari
+  // detect iPhone / iPad
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   openBtn.addEventListener("click", () => {
     modal.classList.add("show");
     modal.setAttribute("aria-hidden", "false");
 
-    // show iOS overlay so user opens PDF in new tab
-    const iosBox = document.getElementById("noteIOS");
-    if (iosBox) iosBox.classList.toggle("show", isIOS);
+    // show iOS message instead of embedded PDF
+    if (iosBox) {
+      iosBox.classList.toggle("show", isIOS);
+    }
   });
 
   closeBtn.addEventListener("click", () => {
@@ -79,6 +81,8 @@
 </script>
 
 
+
 </body>
 
 </html>
+
