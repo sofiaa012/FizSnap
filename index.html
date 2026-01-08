@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game - Start</title>
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/start.css">
+        <link rel="stylesheet" href="styles/note.css">
+    <script src="audio.js"></script>
+</head>
+
+<body>
+    <img src="images/logoapp.png" alt="Memory Game Logo" class="game-logo">
+    <a href="start.html" class="start-button">Mula</a>
+    <a href="carabermain.html" class="about-button">Cara Bermain</a>
+<button class="about-button" id="openNoteBtn">Nota</button>
+
+
+    <a href="about.html" class="about-button">Mengenai Kami</a>
+    <img src="images/sticker1.png" alt="" class="sticker sticker--left" />
+    <img src="images/sticker2.png" alt="" class="sticker sticker--right" />
+
+
+
+    <div class="note-modal" id="noteModal" aria-hidden="true">
+    <div class="note-modal-content">
+        <button class="note-close" id="closeNoteBtn">X</button>
+
+        <h2 class="note-title"><center>Nota Fizik</center></h2>
+
+        <iframe class="note-frame" src="note.pdf"></iframe>
+    </div>
+    </div>
+
+    <script src="start.js"></script>
+    <script>
+  const openBtn = document.getElementById("openNoteBtn");
+  const modal = document.getElementById("noteModal");
+  const closeBtn = document.getElementById("closeNoteBtn");
+
+  openBtn.addEventListener("click", () => {
+    modal.classList.add("show");
+    modal.setAttribute("aria-hidden", "false");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.classList.remove("show");
+    modal.setAttribute("aria-hidden", "true");
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+    }
+  });
+</script>
+
+</body>
+
+</html>
