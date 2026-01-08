@@ -29,42 +29,43 @@
         <button class="note-close" id="closeNoteBtn">X</button>
 
         <h2 class="note-title"><center>Nota Fizik</center></h2>
-
-    <!-- Viewer area -->
 <div class="note-view">
-  <!-- Desktop/Android: try embed -->
-  <embed class="note-frame" src="note.pdf" type="application/pdf" />
+  <embed class="note-frame" id="noteEmbed" src="note.pdf" type="application/pdf" />
 
-  <!-- iPhone fallback -->
   <div class="note-ios" id="noteIOS">
-    <p class="note-hint">Untuk paparan penuh di iPhone, nota akan dibuka dalam tab baharu.</p>
-    <a class="note-open" href="note.pdf" target="_blank" rel="noopener">Buka Nota (PDF)</a>
+    <div class="note-ios-card">
+      <p class="note-hint">
+        Untuk paparan penuh, nota akan dibuka dalam tab baharu.
+      </p>
+      <a class="note-open" href="note.pdf" target="_blank" rel="noopener">
+        Buka Nota (PDF)
+      </a>
+    </div>
   </div>
 </div>
+
 
 
     </div>
     </div>
 
     <script src="start.js"></script>
-    
 <script>
   const openBtn = document.getElementById("openNoteBtn");
   const modal = document.getElementById("noteModal");
   const closeBtn = document.getElementById("closeNoteBtn");
-  const iosBox = document.getElementById("noteIOS");
 
-  // detect iPhone / iPad
+  const iosBox = document.getElementById("noteIOS");
+  const noteEmbed = document.getElementById("noteEmbed");
+
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   openBtn.addEventListener("click", () => {
     modal.classList.add("show");
     modal.setAttribute("aria-hidden", "false");
 
-    // show iOS message instead of embedded PDF
-    if (iosBox) {
-      iosBox.classList.toggle("show", isIOS);
-    }
+    if (iosBox) iosBox.classList.toggle("show", isIOS);
+    if (noteEmbed) noteEmbed.style.display = isIOS ? "none" : "block";  // ✅ important
   });
 
   closeBtn.addEventListener("click", () => {
@@ -80,9 +81,6 @@
   });
 </script>
 
-
-
 </body>
 
 </html>
-
