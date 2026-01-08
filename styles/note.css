@@ -58,28 +58,47 @@
   height: 100%;
 }
 
-/* iOS fallback overlay (hidden by default) */
+/* embedded pdf */
+.note-frame{
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 16px;
+  background: #fff;
+}
+
+/* iOS overlay (hidden for Android/Windows) */
 .note-ios{
   position: absolute;
   inset: 0;
-  display: none;
+  display: none;              /* ✅ hidden by default */
   place-items: center;
-  text-align: center;
-  padding: 18px;
+  padding: 16px;
+  border-radius: 16px;
 
-  background: rgba(20,30,35,0.95);
-  border-radius: 14px;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
 }
 
 .note-ios.show{
-  display: grid;
+  display: grid;              /* ✅ only show on iPhone */
+}
+
+.note-ios-card{
+  width: min(92%, 420px);
+  background: rgba(20,30,35,0.92);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 16px 30px rgba(0,0,0,0.45);
+  text-align: center;
 }
 
 .note-hint{
   margin: 0 0 12px;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.90);
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .note-open{
@@ -90,6 +109,6 @@
   text-decoration: none;
 
   color: #07353a;
-  background: rgba(0,230,230,0.9);
+  background: rgba(0,230,230,0.92);
   border: 1px solid rgba(0,230,230,0.35);
 }
