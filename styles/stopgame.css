@@ -1,0 +1,123 @@
+:root {
+    --bg-color: #d3d9c5; /* Soft green background */
+    --primary-color: #fce9c7; /* Darker green for text */
+    --accent-color: #f8f5ed; /* Neutral beige for accents */
+    --detail-color: #bfa17f; /* Soft brown for details */
+    --secondary-color: #02a0a0; /* Muted olive green */
+}
+
+/* Ensure html and body occupy full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scroll on body and html */
+}
+
+/* Global Body Styles */
+body {
+     background: url('../images/bgapps.png') center / cover no-repeat fixed !important;
+    position: relative;
+    overflow: hidden; /* Prevent scroll */
+    font-family: 'Poppins', sans-serif;
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure body takes up full viewport height */
+    margin: 0;
+    padding: 0 15px;
+    flex-direction: column; /* Align content vertically */
+}
+
+
+/* Stop Game Logo */
+.stopgame-logo {
+    width: 150px; /* Adjust size of logo */
+    margin-bottom: 5px;
+}
+
+/* Heading Style */
+h1 {
+    margin-bottom: 30px;
+    color: var(--primary-color); /* Use root variable */
+    font-size: 1rem; /* Adjust this value as needed */
+    font-weight: 600;
+    text-align: center; /* Ensure h1 text is centered */
+    padding: 0 20px; /* Add horizontal padding to heading */
+}
+
+/* Options Container */
+.options {
+    display: flex;
+    justify-content: center; /* Center the buttons */
+    gap: 20px; /* Space between buttons */
+    margin-top: 20px; /* Add margin for spacing above */
+}
+
+/* Button Styles */
+.btn {
+    padding: 16px;
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 150px; /* Set a fixed width for both buttons */
+    flex: 1; /* Allow buttons to grow equally */
+}
+
+/* Button Hover Effect */
+.btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Specific Button Colors */
+#continue-game {
+    background-color: #02a0a0; /* Green for "Tidak" */
+}
+.btn:last-child {
+    background-color: #a41616; /* Red for "Ya" */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.15rem; /* Slightly smaller font size for tablets */
+        padding: 0 15px; /* Adjust padding for smaller screens */
+    }
+
+    .btn {
+        padding: 14px 32px; /* Adjust padding for medium screens */
+        font-size: 1.1rem;
+        width: 120px; /* Reduce button width */
+    }
+
+    .options {
+        gap: 15px; /* Reduce gap between buttons for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.1rem; /* Even smaller font size for mobile */
+        margin-bottom: 25px;
+        padding: 0 10px; /* Adjust padding for smaller screens */
+    }
+
+    .btn {
+        padding: 12px 28px; /* Adjust padding for small screens */
+        font-size: 1rem;
+        width: 110px; /* Further reduce button width for mobile */
+    }
+
+    .options {
+        gap: 10px; /* Reduce gap even more for small screens */
+    }
+}

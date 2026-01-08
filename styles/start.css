@@ -1,0 +1,596 @@
+/* Global Styles */
+:root {
+    --bg-color: #d3d9c5; /* Soft green background */
+    --primary-color: #004c66; /* Darker green for text */
+    --accent-color: #f8f5ed; /* Neutral beige for accents */
+    --detail-color: #bfa17f; /* Soft brown for details */
+    --secondary-color: #02a0a0; /* Muted olive green */
+    --button-font-family: 'Poppins', sans-serif;
+    --button-font-size: 1rem;
+    --button-padding: 12px 28px;
+}
+
+html, body { height: 100%; }
+
+body {
+  /* go up from /styles/ to project root, then into /images/ */
+  background: url('../images/bgapps.png') center / cover no-repeat fixed !important;
+  position: relative;
+  z-index: 0;
+}
+
+
+/* Disable scroll when modal is open */
+body.modal-open, html.modal-open {
+    overflow: hidden; /* Disable scrolling when the modal is visible */
+    height: 100%; /* Ensure the page does not scroll */
+}
+
+/* base sticker styling */
+.sticker {
+  position: fixed;          /* stays relative to the viewport */
+  z-index: -1;              /* behind main content */
+  width: 180px;             /* tweak size */
+  height: auto;
+  opacity: 0.9;
+  pointer-events: none;     /* clicks pass through */
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,.15));
+}
+
+/* positions */
+.sticker--left  { top: 5vh;   left: 8vw;  animation: floatY 9s ease-in-out infinite; }
+.sticker--right { bottom: 6vh; right: 4vw; animation: floatY 11s ease-in-out infinite reverse; }
+
+/* gentle float animation (replaces your old floatShapes) */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(20px) rotate(1.5deg); }
+}
+
+/* OPTIONAL: subtle horizontal drift so paths aren’t identical */
+@keyframes floatXY {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25%      { transform: translate(6px,  8px) rotate(0.6deg); }
+  50%      { transform: translate(0,   16px) rotate(1.5deg); }
+  75%      { transform: translate(-6px, 8px) rotate(0.6deg); }
+}
+/* If you want drift for one sticker, swap its animation to: animation: floatXY 12s ease-in-out infinite; */
+
+/* responsive tweaks */
+@media (max-width: 768px) {
+  .sticker { width: 120px; }
+}
+@media (max-width: 420px) {
+  .sticker { width: 90px; }
+}
+
+/* accessibility: reduce motion if user prefers */
+@media (prefers-reduced-motion: reduce) {
+  .sticker { animation: none; }
+}
+
+
+/* How Button */
+/* .how-button {
+    display: inline-block;
+    margin-top: 10px; 
+    padding: 12px 28px;
+    background: var(--primary-color); 
+    color: var(--accent-color);
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+} */
+
+/* .how-button:hover {
+    background: var(--secondary-color); 
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.how-button:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.how-button:focus {
+    outline: none;
+    box-shadow: 0 0 10px 2px rgba(74, 100, 57, 0.5); 
+} */
+
+.popup-modal {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent scrolling of the body when the popup is open */
+}
+
+/* Prevent body scrolling when popup is active */
+body.modal-open {
+    overflow: hidden; 
+}
+
+.popup-content {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%; /* 90% width for small devices */
+    max-width: 380px; /* Max width for larger screens */
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    margin: 0 auto; /* Center the modal horizontally */
+    max-height: 80vh; /* Ensure the modal is within the viewport height */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds the height */
+}
+
+.popup-content h2 {
+    margin-bottom: 15px;
+}
+
+.popup-content p {
+    margin: 10px 0;
+}
+
+/* Responsive Styles for Example */
+@media (max-width: 768px) {
+    .popup-content {
+        width: 90%; 
+    }
+}
+
+@media (max-width: 480px) {
+    .popup-content {
+        width: 95%; 
+    }
+}
+
+
+.close-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: var(--accent-color);
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.close-button:hover {
+    background: var(--secondary-color);
+}
+
+
+/* Example Images */
+.example {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    margin: 0; 
+}
+
+/* Example Images */
+.example-image {
+    width: 100%; /* Ensure image takes up the full width of the container */
+    max-width: 180px; /* Set a max-width so the image doesn't grow too large */
+    height: auto; /* Maintain the aspect ratio of the image */
+    object-fit: cover;
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+    .popup-content {
+        width: 77%; /* Use 90% width for tablets */
+        max-height: 80vh; /* Adjust to ensure it's not too tall for the screen */
+    }
+}
+
+@media (max-width: 480px) {
+    .popup-content {
+        width: 82%; /* Use 95% width for mobile phones */
+        max-height: 80vh; /* Ensure it's still readable */
+    }
+}
+
+
+.example-image:hover {
+    transform: scale(1.05);
+}
+
+.match-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--primary-color); 
+    font-size: 1.2rem;
+    font-weight: bold;
+    gap: 5px;
+}
+
+.match-text span {
+    font-size: 2.5rem; 
+    margin-bottom: -5px; 
+}
+
+.match-text p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Responsive Styles for Example */
+@media (max-width: 768px) {
+    .example {
+        gap: 5px; 
+    }
+    .example-image {
+        width: 120px;
+        height: 120px;
+    }
+    .match-text span {
+        font-size: 2rem;
+    }
+    .match-text p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .example-image {
+        width: 100px;
+        height: 100px;
+    }
+    .match-text span {
+        font-size: 1.8rem;
+    }
+    .match-text p {
+        font-size: 0.8rem;
+    }
+}
+/* Game Logo */
+.game-logo {
+    width: 80%;
+    max-width: 300px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0px 4px 6px rgba(30, 67, 1, 0.5)); /* Shadow matching the button color */
+}
+
+/* Start Button */
+/* .start-button {
+    display: inline-block;
+    padding: 14px 30px;
+    background: var(--primary-color); /* Solid color instead of gradient 
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+} */
+
+/* .start-button:hover {
+    background: var(--secondary-color); /* Change background color on hover *
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.start-button:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.start-button:focus {
+    outline: none;
+    box-shadow: 0 0 10px 2px rgba(74, 100, 57, 0.5);
+} */
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .game-logo {
+        max-width: 240px;
+    }
+
+    .start-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-logo {
+        max-width: 200px;
+    }
+
+    .start-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Common Button Styles */
+.how-button, .start-button, .notes-button,.about-button {
+    display: inline-block;
+    padding: var(--button-padding);
+    background: var(--primary-color);
+    color: var(--accent-color);
+    font-family: var(--button-font-family);
+    font-size: var(--button-font-size);
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    width: 12%; 
+    box-sizing: border-box;
+}
+.about-role{
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  background: linear-gradient(135deg, var(--secondary-color), #028c8c);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+
+/* Responsive Styles for Mobile */
+@media (max-width: 768px) {
+    .how-button, .start-button,.notes-button,.about-button {
+        width: 50%; 
+        padding: 12px 20px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .how-button, .start-button,.notes-button,.about-button {
+        width: 55%; 
+        padding: 10px 15px; 
+    }
+}
+
+/* Adding a margin to create a gap between buttons */
+.how-button {
+    margin-top: 15px; 
+}
+
+/* Hover effect */
+.how-button:hover, .start-button:hover, .notes-button:hover,.about-button:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Active effect */
+.how-button:active, .start-button:active, .notes-button:active,.about-button:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Focus effect */
+.how-button:focus, .start-button:focus, .notes-button:focus, .about-button:focus {
+    outline: none;
+    box-shadow: 0 0 10px 2px rgba(74, 100, 57, 0.5);
+}
+
+
+/* Nota start */
+
+/* Notes Button */
+.notes-button {
+    margin-top: 15px; 
+}
+
+/* Notes List */
+.notes-list {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+.note-item {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 15px; 
+    text-align: right; 
+    flex-wrap: nowrap; 
+}
+
+.note-content {
+    max-width: 60%; /* Text takes 60% of the row */
+    color: var(--primary-color);
+    text-align: left; /* Justify the text for a neat appearance */
+    line-height: 1.6; /* Increase line spacing for readability */
+    font-size: 1rem; /* Adjust font size for balance */
+    padding: 0 10px; /* Add padding to create some spacing */
+}
+
+.note-image {
+    width: 35%; 
+    max-width: 120px; 
+    height: auto; 
+    object-fit: cover;
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+/* Ensure side-by-side layout on smaller screens */
+@media (max-width: 768px) {
+    .note-item {
+        flex-wrap: nowrap; 
+    }
+
+    .note-content {
+        font-size: 0.95rem; 
+        max-width: 50%; 
+    }
+
+    .note-image {
+        max-width: 120px; 
+        height: 120px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .note-item {
+        flex-wrap: nowrap; 
+        gap: 10px; 
+    }
+
+    .note-content {
+        font-size: 0.9rem; 
+        line-height: 1.5; 
+        max-width: 55%; 
+    }
+
+    .note-image {
+        width: 100px; 
+        height: 100px;
+        max-width: none; 
+    }
+}
+/* Nota end */
+
+
+
+/* about start */
+.about-button {
+    margin-top: 15px; 
+}
+
+/* About List */
+.about-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.about-item {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 15px; 
+    text-align: right; 
+    flex-wrap: nowrap; 
+}
+
+.about-content {
+    max-width: 60%; 
+    color: var(--primary-color);
+    text-align: left; 
+    line-height: 1.2; 
+    font-size: 1rem; 
+    padding: 0 10px; 
+}
+.about-image {
+    width: 150px;    /* Set width to a fixed size */
+    height: 150px;   /* Set height to match the width for a perfect circle */
+    object-fit: cover;  /* Ensure the image covers the entire area of the circle */
+    border-radius: 50%;   /* Make the image circular */
+    box-shadow: 0 0 10px 4px rgba(74, 100, 57, 0.4), 0 0 15px 8px rgba(74, 100, 57, 0.3); /* Softer neon glow */
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out; /* Smooth transition */
+}
+
+/* Hover animation with scaling and soft glow increase */
+.about-image:hover {
+    transform: scale(1.05);  /* Scale the image slightly on hover */
+    box-shadow: 0 0 20px 8px rgba(74, 100, 57, 0.5), 0 0 25px 12px rgba(74, 100, 57, 0.4); /* Softer and more pronounced neon glow on hover */
+}
+
+/* Mobile-specific animation */
+@media (max-width: 768px) {
+    .about-image {
+        width: 120px;   /* Reduce the image size on mobile */
+        height: 120px;  /* Maintain a proportional size */
+        animation: scaleGlowMobile 8s ease-in-out infinite; /* Add a pulse animation */
+    }
+
+    /* Keyframe animation for mobile devices */
+    @keyframes scaleGlowMobile {
+        0% {
+            transform: scale(1); /* Start at normal size */
+            box-shadow: 0 0 10px 4px rgba(74, 100, 57, 0.4), 0 0 15px 8px rgba(74, 100, 57, 0.3); /* Softer neon glow */
+        }
+        50% {
+            transform: scale(1.1); /* Grow the image slightly */
+            box-shadow: 0 0 15px 6px rgba(74, 100, 57, 0.5), 0 0 20px 10px rgba(74, 100, 57, 0.4); /* Soft glowing effect */
+        }
+        100% {
+            transform: scale(1); /* Return to original size */
+            box-shadow: 0 0 10px 4px rgba(74, 100, 57, 0.4), 0 0 15px 8px rgba(74, 100, 57, 0.3); /* Return to soft neon glow */
+        }
+    }
+}
+
+
+/* Ensure side-by-side layout on smaller screens */
+@media (max-width: 768px) {
+    .about-item {
+        flex-wrap: nowrap; 
+    }
+
+    .about-content {
+        font-size: 0.95rem;
+        max-width: 50%; 
+    }
+
+    .about-image {
+        width: 140px;  /* Slightly smaller image size on tablets */
+        height: 140px;  /* Keep it square for circular shape */
+    }
+}
+
+@media (max-width: 480px) {
+    .about-item {
+        flex-wrap: nowrap; 
+        gap: 10px; 
+    }
+
+    .about-content {
+        font-size: 0.9rem; 
+        line-height: 1.5; 
+        max-width: 55%; 
+    }
+
+    .about-image {
+        width: 120px;    /* Set a smaller size for mobile screens */
+        height: 120px;   /* Ensure it's still a circle */
+        max-width: none; /* Avoid max-width constraints */
+    }
+}

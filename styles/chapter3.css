@@ -1,0 +1,146 @@
+/* C1 level specific styles */
+:root {
+    --bg-color: #d3d9c5; /* Soft green background */
+    --primary-color: #fce9c7; /* Darker green for text */
+    --accent-color: #f8f5ed; /* Neutral beige for accents */
+    --detail-color: #bfa17f; /* Soft brown for details */
+    --secondary-color: #02a0a0; /* Muted olive green */
+}
+
+html, body {
+    height: 100%;  /* Ensure the body and html take full height of the viewport */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;  
+}
+
+/* Global Body Styles */
+body {
+    background: url('../images/bgapps.png') center / cover no-repeat fixed !important;
+    position: relative;
+    overflow: hidden; /* Prevent scroll */
+    font-family: 'Poppins', sans-serif;
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure body takes up full viewport height */
+    margin: 0;
+    padding: 0 15px;
+    flex-direction: column; /* Align content vertically */
+}
+
+
+
+/* Home Icon */
+.home-icon {
+    position: absolute;/* Easy level specific styles */
+    :root {
+        --bg-color: #d3d9c5; /* Soft green background */
+        --primary-color: #fce9c7; /* Darker green for text */
+        --accent-color: #f8f5ed; /* Neutral beige for accents */
+        --detail-color: #bfa17f; /* Soft brown for details */
+        --secondary-color: #02a0a0; /* Muted olive green */
+    }
+    
+    html, body {
+        height: 100%;  /* Ensure the body and html take full height of the viewport */
+        margin: 0;
+        padding: 0;
+        overflow: hidden;  
+    }
+    
+    /* Global Body Styles */
+    body {
+        background: var(--bg-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh; /* Ensure body takes up full viewport height */
+        margin: 0;
+        padding: 0 15px;
+        flex-direction: column; /* Align content vertically */
+    }
+    
+    /* Game Wrapper */
+    .game-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center contents */
+    }
+    
+    /* Game Header */
+    .game-header {
+        display: flex;
+        justify-content: space-between; /* Space between timer and lives */
+        width: 100%; /* Ensures the header takes the full width */
+        margin-bottom: 20px; /* Space between header and game grid */
+        padding-top: 40px; /* Increase padding to move the header down */
+    }
+    
+    /* Home Icon */
+    .home-icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: var(--primary-color); /* Use root variable */
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+        z-index: 1; /* Ensure home icon is in front */
+    }
+    
+    .home-icon:hover {
+        color: var(--secondary-color); /* Use root variable */
+    }
+    
+   /* Stop Game Logo */
+    .easygame-logo {
+        width: 150px; /* Adjust size of logo */
+        margin-bottom: 50px; /* Increase this value to add more space below the logo */
+    }
+    
+    /* Card Styles */
+    .card {
+        background-color: var(--primary-color);
+        border-radius: 10px;
+        height: 100px; /* Set a fixed height for cards */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        color: var(--accent-color);
+    }
+    top: 20px;
+    right: 20px;
+    color: var(--primary-color); /* Use root variable */
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+    z-index: 1; /* Ensure home icon is in front */
+}
+
+.home-icon:hover {
+    color: var(--secondary-color); /* Use root variable */
+}
+
+/* Stop Game Logo */
+.chapter3game-logo {
+    width: 170px; /* Adjust size of logo */
+    margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+    .card {
+        height: 100px; /* Smaller height for smaller screens */
+        width: 100px;  /* Smaller width for smaller screens */
+    }
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: center; /* Center the logo horizontally */
+    align-items: center;     /* Center the logo vertically */
+    margin-bottom: 20px;    /* Space below the header */
+    padding: 20px 0;        /* Padding above and below the header */
+    width: 100%;            /* Full width to align with other elements */
+}

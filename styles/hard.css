@@ -1,0 +1,147 @@
+/* Global Body Styles */
+:root {
+    --bg-color: #d3d9c5; /* Soft green background */
+    --primary-color: #4a6439; /* Darker green for text */
+    --accent-color: #f8f5ed; /* Neutral beige for accents */
+    --detail-color: #bfa17f; /* Soft brown for details */
+    --secondary-color: #a6b293; /* Muted olive green */
+}
+
+html, body {
+    height: 100%;  /* Ensure the body and html take full height of the viewport */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;  
+}
+
+body {
+    background: var(--bg-color);
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    min-height: 100vh;
+    margin: 0;
+    padding: 0 15px;
+    flex-direction: column;
+    overflow: hidden; /* Prevent the background from sliding */
+}
+
+/* Floating Shapes Effect */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    animation: floatShapes 8s infinite ease-in-out;
+    z-index: -1;
+}
+
+body::before {
+    background: var(--accent-color);
+    top: -100px;
+    left: -100px;
+}
+
+body::after {
+    background: var(--secondary-color);
+    bottom: -100px;
+    right: -100px;
+}
+
+/* Keyframes for floating effect */
+@keyframes floatShapes {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(20px); }
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: center; /* Center the logo horizontally */
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px 0;
+    width: 100%;
+    position: relative;
+}
+
+/* Medium Game Logo */
+.hardgame-logo {
+    position: absolute;
+    top: 5px; /* Adjust value to move the logo up or down */
+    width: 150px; /* Adjust size of logo */
+    z-index: 2; /* Ensure logo is above background elements */
+    margin: 0 auto;
+}
+
+/* Home Icon */
+.home-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--primary-color); /* Keep original color */
+    font-size: 1.5rem;
+    z-index: 1;
+}
+
+.home-icon:hover {
+    color: var(--secondary-color); /* Use root variable */
+}
+/* Game Wrapper */
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0; /* Remove padding if not necessary */
+}
+
+/* Game Header */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;  /* Reduced margin to bring elements closer */
+    padding-top: 0px;
+}
+
+/* Game Container */
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    position: relative;
+    top: 40px;
+}
+
+/* Card Styles */
+.card {
+    background-color: transparent;
+    border-radius: 10px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+.timer, .lives {
+    position: relative; /* Ensure elements stay positioned */
+    top: 20px; /* Adjust this value to move the timer and lives up */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    body {
+        padding: 0 10px; /* Adjust padding for smaller screens */
+    }
+
+    .card {
+        height: 80px;
+        width: 80px;
+    }
+}

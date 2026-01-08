@@ -1,0 +1,43 @@
+/* Index page specific styles */
+.menu {
+    text-align: center;
+    background-color: #fff;
+    padding: 40px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 380px;
+    margin-top: 30px;
+}
+
+.menu h1 {
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.difficulty-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-button {
+    padding: 18px 0;
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: #fff;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.menu-button:hover {
+    background-color: #45a049;
+}
+
+.menu-button:active {
+    transform: scale(0.98);
+}
