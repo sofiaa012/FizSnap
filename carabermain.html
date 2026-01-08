@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cara Bermain</title>
+
+  <link rel="stylesheet" href="styles/common.css">
+  <link rel="stylesheet" href="styles/carabermain.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="audio.js"></script>
+</head>
+
+<body>
+
+  <a href="index.html" class="home-icon">
+    <i class="fas fa-home"></i>
+  </a>
+
+  <main class="how">
+
+    <header class="how-header">
+      <h1>Cara Bermain</h1>
+      <p>
+        Ikuti langkah-langkah berikut untuk memahami cara bermain dan
+        meningkatkan prestasi pembelajaran anda.
+      </p>
+    </header>
+
+    <section class="timeline">
+
+      <div class="step">
+        <div class="number">1</div>
+        <div class="content">
+          <h2>Pilih Bab</h2>
+          <p>Pilih bab pembelajaran sebelum memulakan permainan.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="number">2</div>
+        <div class="content">
+          <h2>Buka Dua Kad</h2>
+          <p>Klik dua kad untuk melihat isi kandungan dan cuba mencari pasangan yang betul.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="number">3</div>
+        <div class="content">
+          <h2>Padankan Konsep</h2>
+          <p>Padankan istilah dengan definisi, unit atau formula yang tepat.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="number">4</div>
+        <div class="content">
+          <h2>Perhatikan Masa & Nyawa</h2>
+          <p>Kesalahan akan mengurangkan nyawa dan permainan mempunyai had masa.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="number">5</div>
+        <div class="content">
+          <h2>Lihat Maklum Balas</h2>
+          <p>Selepas permainan tamat, semak skor, penilaian bintang dan cadangan pembelajaran.</p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+<script>
+  const homeIcon = document.querySelector(".home-icon");
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener("scroll", () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY && currentScrollY > 50) {
+      homeIcon.classList.add("fade-out");
+    } else {
+      homeIcon.classList.remove("fade-out");
+    }
+
+    lastScrollY = currentScrollY;
+  });
+</script>
+
+</body>
+</html>
